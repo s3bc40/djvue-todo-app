@@ -1,13 +1,17 @@
 """Databse models for the TodoApp"""
+from datetime import datetime
 from django.db import models
 from django.contrib.auth import get_user_model
-from datetime import datetime
 
 
 class Tag(models.Model):
     """Tag allowing to define a Task by keywords"""
     name = models.CharField(max_length=20, blank=False)
     visibility = models.BooleanField()
+
+    def __str__(self):
+        """Show name instead of object on admin panel"""
+        return self.name
 
 
 class Task(models.Model):
@@ -17,19 +21,32 @@ class Task(models.Model):
     #                         on_delete=models.CASCADE,
     #                         null=False
     #                         )
+
+
+    class Priority(models.IntegerChoices):
+        """Priority level choice into real numbers"""
+        NOT_IMPORTANT = 1
+        IMPORTANT = 2
+        URGENT = 3
+
+
     title = models.CharField(max_length=100, blank=False)
     description = models.TextField(blank=True)
-    date_created = models.DateTimeField(auto_created=True, auto_now_add=True)
-    date_updated = models.DateTimeField(
+    date_created = models.DateField(auto_created=True, auto_now_add=True)
+    date_updated = models.DateField(
                                         auto_created=True,
                                         auto_now=True
                                         )
-    date_completed = models.DateTimeField(null=True)
+    date_completed = models.DateField(null=True, blank=True)
     completed = models.BooleanField()
-    due_date = models.DateTimeField(null=True)
-    priority = models.IntegerField(null=True) # Make it to ChoiceField
+    due_date = models.DateField(null=True, blank=True)
+    priority = models.IntegerField(null=True, choices=Priority.choices) # Make it to ChoiceField
     tags = models.ManyToManyField(Tag)
 
+    def __str__(self):
+        """Show title instead of object on admin panel"""
+        return self.title
+    
     def is_completed(self):
         """Check if Task is completed to register data"""
         if self.completed:
