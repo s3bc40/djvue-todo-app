@@ -1,20 +1,31 @@
 <template>
   <div>
-    <img alt="Vue logo" src="./assets/logo.png">
+    <TaskList
+      :tasks = 'tasks'
+    ></TaskList>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 
+import TaskList from './components/TaskList'
+
 export default {
   name: 'App',
   components: {
+    TaskList
+  },
+  data () {
+    return {
+      tasks: []
+    }
   },
   mounted () {
     axios.get('http://localhost:8000/api/tasks')
       .then( (response) => {
         console.log(response.data)
+        this.tasks = response.data
       })
   }
 }
