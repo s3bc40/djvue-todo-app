@@ -1,20 +1,22 @@
 <template>
   <div>
-    <TaskList
+    <list-task
       :tasks = 'tasks'
-    ></TaskList>
+       v-if="tasks.length > 0"
+    ></list-task>
+    <div class="no-task" v-else>No tasks available</div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 
-import TaskList from './components/TaskList'
+import ListTask from './components/ListTask'
 
 export default {
   name: 'App',
   components: {
-    TaskList
+    'list-task': ListTask,
   },
   data () {
     return {
@@ -31,13 +33,8 @@ export default {
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="postcss">
+  .no-task {
+    @apply text-6xl text-center text-pink-600
+  }
 </style>
