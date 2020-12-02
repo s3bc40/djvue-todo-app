@@ -38,17 +38,15 @@ export default {
             flex 
             flex-col 
             w-2/3 
-            mx-auto 
-            lg:flex-row 
-            lg:space-x-4 
+            mx-auto
     }
     .task-container {
         @apply 
             relative 
             my-6 
             p-4 
+            container
             mx-auto 
-            w-1/2 
             rounded-md 
             shadow-md 
             border 

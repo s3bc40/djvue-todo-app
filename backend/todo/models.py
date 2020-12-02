@@ -46,7 +46,7 @@ class Task(models.Model):
     def __str__(self):
         """Show title instead of object on admin panel"""
         return self.title
-    
+
     def is_completed(self):
         """Check if Task is completed to register data"""
         if self.completed:
