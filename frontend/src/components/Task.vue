@@ -59,46 +59,70 @@ export default {
 
 <style lang="postcss" scoped>
     #completed {
-        @apply absolute top-2 right-2
+        @apply 
+            absolute 
+            top-2 
+            right-2
     }
     .task-header {
-        @apply text-xl text-left font-semibold text-pink-500 
+        @apply 
+            text-xl 
+            text-left 
+            text-pink-500 
+            font-semibold 
     }
     .description {
-        @apply text-sm text-center font-normal text-black py-2
+        @apply 
+            text-sm 
+            text-center 
+            font-normal 
+            text-black py-2
     }
     .info-container {
         @apply 
-            text-xs 
-            flex 
             flex-row 
-            font-light 
+            flex 
+            py-4
+            text-xs 
             text-gray-600 
+            font-light 
             space-x-3 
             items-baseline 
-            py-4
     }
     .task-footer {
-        @apply relative
+        @apply 
+            relative
     }
     .tag-list {
-        @apply flex flex-wrap
+        @apply 
+            flex 
+            flex-wrap
     }
     .tag {
-        @apply text-xs p-1 bg-pink-300 rounded-sm text-white mr-1
+        @apply 
+            p-1 
+            text-xs 
+            text-white mr-1
+            bg-pink-300 
+            rounded-sm 
     }
     .task-button {
-        @apply block sm:absolute space-x-1 top-0 right-0
+        @apply 
+            sm:absolute 
+            block 
+            space-x-1 
+            top-0 
+            right-0
     }
     .task-button > button {
         @apply
+            hover:text-gray-500
+            focus:outline-none
             p-1
             rounded-md
             transition-colors
             opacity-40
             text-black
             text-sm
-            hover:text-gray-500
-            focus:outline-none
     }
 </style>

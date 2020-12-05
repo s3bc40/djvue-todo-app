@@ -10,7 +10,7 @@
       ></list-task>
       <div class="no-task" v-else>No tasks available</div>
       <div class="modal" v-if="showModal">
-        <div class="modal-content">
+        <div class="modal-container">
           <button class="absolute top-2 right-2" @click="showModal = false">
             <i class="far fa-window-close fa-2x"></i>
           </button>
@@ -62,6 +62,12 @@ export default {
   }
   .button-add {
     @apply 
+      md:fixed
+      md:mt-0
+      md:top-2
+      md:right-2
+      hover:bg-pink-800
+      focus:outline-none
       block
       p-2
       mt-2
@@ -70,13 +76,7 @@ export default {
       bg-pink-400 
       text-white 
       font-bold 
-      md:fixed
-      md:mt-0
-      md:top-2
-      md:right-2
       transition-colors
-      hover:bg-pink-800
-      focus:outline-none
   }
   .modal {
     @apply
@@ -90,7 +90,7 @@ export default {
       bg-gray-800
       bg-opacity-80
   }
-  .modal-content {
+  .modal-container {
     @apply
       relative
       container
@@ -99,5 +99,4 @@ export default {
       bg-white
       p-6
   }
-
 </style>
