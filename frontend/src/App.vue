@@ -9,15 +9,17 @@
         v-if="tasks.length > 0"
       ></list-task>
       <div class="no-task" v-else>No tasks available</div>
-      <div class="modal" v-if="showModal">
-        <div class="modal-container">
-          <button class="absolute top-2 right-2" @click="showModal = false">
-            <i class="far fa-window-close fa-2x"></i>
-          </button>
-          <add-form
-            form_title="Add a task"
-          ></add-form>
-        </div>
+      <div class="modal" v-show="showModal">
+        <transition name="dropdown">
+          <div class="modal-container">
+            <button class="close-modal" @click="showModal = false">
+              <i class="far fa-window-close fa-2x"></i>
+            </button>
+            <add-form
+              form_title="Add a task"
+            ></add-form>
+          </div>
+        </transition>
       </div>
   </div>
 </template>
@@ -49,6 +51,9 @@ export default {
         console.log(response.data)
         this.tasks = response.data
       })
+      .catch( (error) => {
+        console.log(error);
+      });
   }
 }
 </script>
@@ -98,5 +103,11 @@ export default {
       rounded-md
       bg-white
       p-6
+  }
+  .close-modal {
+    @apply
+      absolute 
+      top-2 
+      right-2
   }
 </style>
